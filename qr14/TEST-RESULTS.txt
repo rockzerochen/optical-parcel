@@ -1,0 +1,33 @@
+Low-density core 1.3 validation — 2026-10-28
+Environment: Windows, Chrome Headless Shell 156, Node.js, original v0.6.8
+runtime JS with the locally modified WASM core. No physical camera benchmark.
+
+PASS core validation and API tests
+- WABT validation and WebAssembly.validate.
+- Encoder setup and frame generation for 0 / 37 / 32768 / 1048576-byte input
+  in B, Bm, Micro, 4C, Low (69), UltraLow (70).
+- Existing official B sample decoded to the original 7538-byte payload, SHA256:
+  a0310e43fc6560dd6701fcb474d89244a0ce8b3730fb06dbd35e2566b250c3e5
+- New mode native canvas sizes and decoder capacities checked in the actual
+  browser: Low 608x464 / 1764 bytes; UltraLow 464x356 / 948 bytes.
+
+PASS browser screen-image round trips, exact SHA256 and filename
+- Low: 4096 random bytes, 3 frames.
+- UltraLow: 4096 random bytes, 5 frames.
+- B: 4000 bytes; Bm: 12000 bytes; Micro: 4096 bytes; 4C: 4000 bytes.
+- Low: 1048576 random bytes recovered after 608 generated frames.
+- UltraLow: 1048576 random bytes recovered after 1152 generated frames.
+Frame counts are observed for these random test inputs, not fixed guarantees.
+No page JavaScript errors or external HTTP requests in round-trip tests.
+
+Camera simulation tests exercise the production capture, freeze/four clicks,
+crop, perspective correction, worker decode and SHA256 comparison for each
+new profile. They also exercise capability-gated focus/exposure constraints.
+See the included test-camera-density.cjs for the exact reproducible procedure.
+
+Limitations
+Generated/simulated camera images are not real optics. Physical recognition
+rate and transmission speed were not measured. New Low/UltraLow modes require
+this version on both ends; old tools and the unmodified Android APK do not
+support them. Windows disk saving was not revalidated in this test sandbox.
+Image enhancements from frontend 1.2 remain enabled; no Android changes.

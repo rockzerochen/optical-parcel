@@ -1,0 +1,38 @@
+Optical Parcel Android 2.0.0 validation
+
+Build and static APK checks — PASS
+- Java 17 compilation against Android API 35; D8 DEX generation.
+- AAPT2 resources/manifest packaging; minimum Android API 26, target API 35.
+- APK Signature Scheme v2 and v3 verification; ZIP/page alignment check.
+- Application package cn.rockzero.opticalparcel; versionCode 20000.
+- Manifest requests CAMERA only. INTERNET/microphone/broad storage absent.
+- Offline HTML inside APK matches the tested Android-adapted asset exactly.
+- No ABI-specific native libraries; no private signing material in the APK.
+- Extended Cimbar WASM and QR codec are the same versions as web tool 1.4.
+
+Mobile frontend/bridge tests — PASS, Chromium with mocked native interface
+- Phone-size layout; primary camera controls above preview, advanced settings
+  folded; generator/scanner navigation separated.
+- PNG Blob export invokes the native save bridge with valid PNG bytes.
+- Chinese/emoji/newline QR image round trip preserves exact text.
+- Native clipboard bridge receives exact Unicode text.
+- UTF-8 TXT native-save bridge receives exact bytes with optional BOM.
+- No page errors.
+
+Desktop-to-mobile interoperability — PASS, Chromium
+- Desktop web tool -> Android-adapted HTML, modes Low (69) and UltraLow (70).
+- 10,000 random bytes in each mode recovered with matching SHA256.
+- The native-save bridge received exact original bytes and Unicode filenames.
+- The Java bridge and Android document provider were mocked in these tests.
+
+Android emulator / physical device status
+An Android 15 x86_64 Google APIs image was started using software CPU emulation
+because hardware acceleration was unavailable. It did not complete system boot
+within the test session; it was stopped. APK installation/launch, real WebView
+camera permissions, actual Android document saving and full-screen behavior
+were NOT validated on a running Android system in this environment.
+No physical Android phone was available. No real camera recognition-rate or
+transfer-speed claim is made. Test the installed APK on the intended device.
+
+Reproducible test sources are under tests/. Signature and content digests are
+in APK-SHA256.txt and BUILD.txt. Device diagnostics are available from Help.

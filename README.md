@@ -1,6 +1,6 @@
-# Optical Parcel / ��������
+# Optical Parcel / 光邮离线
 
-[����˵��](README.zh-CN.md) �� English
+[中文说明](README.zh-CN.md) · English
 
 Offline screen-to-camera transfer for small files and text. Includes a self-contained desktop web tool and an Android 8+ host with a mobile layout, camera permission handling, document picker, native saving and clipboard support.
 
@@ -58,4 +58,3 @@ This is an experimental tool, not an official Cimbar release. Low/UltraLow are c
 ## Licenses and credits
 
 Original Android host/adapters are MIT licensed; see [LICENSE](LICENSE). This does not relicense bundled third-party code. Cimbar/libcimbar and its modifications retain MPL-2.0 obligations, Nayuki QR Code generator retains MIT, and jsQR retains Apache-2.0. See [third-party notices](THIRD_PARTY_NOTICES.md) and the complete bundled notices/source.
-

@@ -1,0 +1,56 @@
+Local Cimbar low-density core 1.3 — MPL-2.0
+
+What changed
+The actual WebAssembly Config::update function now handles mode IDs 69 and 70.
+These are local extensions, not upstream-standard modes. Both encoding and
+decoding read the same configuration. The exported API is unchanged.
+
+Low (69): 64x48 grid, 592x448 image, 608x464 padded rendering canvas.
+  2 color bits + 4 symbol bits per cell; 144 corner-reserved cells.
+  RS block 183, parity 36. Symbol bytes 1464 = 8 RS blocks;
+  color bytes 732 = 4 RS blocks. Total 1764 recovered bytes per code frame,
+  divided into 6 fountain chunks of 294 bytes. Each chunk has a 6-byte header.
+UltraLow (70): 48x36 grid, 448x340 image, 464x356 padded rendering canvas.
+  Same 6 bits per cell and corner reservations.
+  RS block 198, parity 40. Symbol bytes 792 = 4 RS blocks;
+  color bytes 396 = 2 RS blocks. Total 948 recovered bytes per code frame,
+  divided into 6 fountain chunks of 158 bytes; 6-byte header per chunk.
+Both symbol/color partitions are independently RS-aligned. No partial RS block
+or partial fountain chunk is required. These capacities are not measured speeds.
+
+Build method and limitations
+This release is a deterministic WASM-level extension of the pinned official
+libcimbar v0.6.8 artifact, assembled using WABT 1.0.39. It is NOT a full rebuild
+of OpenCV/Emscripten dependencies from C++ source. The actual core binary is
+modified, not just a JavaScript mode label or a resized high-density image.
+
+build-core.cjs checks the original SHA256, verifies the expected function/ABI,
+adds the two configuration branches, assembles with WABT, and validates the
+result with both WABT and the JavaScript WebAssembly validator.
+The original algorithms, exports, function indices and existing profiles remain.
+core-extension.wat is the exact added source; core-profiles.json records both
+binary hashes. core-source/GridConf.h and Config.h contain equivalent C++
+profile definitions for a future complete source build. The full upstream C++
+source archive is included; overlay those two files to build that equivalent
+configuration using the upstream toolchain. A full C++ build was not performed.
+
+Reproduce offline (developer workflow only)
+1. Install Node.js locally and extract tools/wabt.tgz into tools/wabt/.
+   The archive contains package/index.js. tar works on current Windows versions:
+     mkdir tools/wabt
+     tar -xzf tools/wabt.tgz -C tools/wabt
+2. From this source directory, run:
+     node build-core.cjs
+     node build.cjs
+3. dist/Cimbar-Offline.html is the self-contained runtime deliverable.
+The original input under wasm-original/ and its pinned SHA file must be retained.
+No dependency downloads occur during these build steps. Runtime users do not
+need Node.js, WABT, a server, Python or any external libraries.
+
+Version coupling
+The WASM-level build recipe deliberately rejects any other upstream binary.
+Upgrading the upstream core requires re-examining its configuration function
+and running the complete regression suite, not changing the SHA guard alone.
+The WAT source and build script are part of this release's preferred editable
+source for the binary extension. Upstream and modified core remain MPL-2.0.
+WABT is a separately bundled developer tool with its own Apache-2.0 license.

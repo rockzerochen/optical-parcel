@@ -1,0 +1,58 @@
+[
+  {
+    "name": "utf8-no-eci",
+    "text": "中文标点，English / 换行\n😀🧪",
+    "mode": "byte",
+    "encoding": "utf-8",
+    "eci": false
+  },
+  {
+    "name": "gb-no-eci",
+    "text": "中文编码，避免乱码。",
+    "mode": "byte",
+    "encoding": "gb2312",
+    "eci": false
+  },
+  {
+    "name": "gb-eci",
+    "text": "中文编码，避免乱码。",
+    "mode": "byte",
+    "encoding": "gb18030",
+    "eci": true
+  },
+  {
+    "name": "hanzi",
+    "text": "汉字编码测试，中文不乱码。",
+    "mode": "hanzi",
+    "encoding": "gb2312",
+    "eci": false
+  },
+  {
+    "name": "kanji",
+    "text": "漢字日本語",
+    "mode": "kanji",
+    "encoding": "shift_jis",
+    "eci": false
+  },
+  {
+    "name": "latin-eci",
+    "text": "café déjà vu",
+    "mode": "byte",
+    "encoding": "iso-8859-1",
+    "eci": true
+  },
+  {
+    "name": "unsupported-eci",
+    "text": "Привет",
+    "mode": "byte",
+    "encoding": "iso-8859-5",
+    "eci": true
+  },
+  {
+    "name": "numeric",
+    "text": "0012345678901234567890",
+    "mode": "numeric",
+    "encoding": null,
+    "eci": false
+  }
+]

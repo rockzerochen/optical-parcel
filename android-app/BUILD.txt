@@ -1,0 +1,42 @@
+Developer build notes (not required to install/run the APK)
+
+Tested toolchain: Java 17.0.20, Android platform 35 r02,
+Android SDK Build Tools 35.0.0 (D8 8.6.2), Python 3, Node.js for web source builds.
+No Gradle dependency is required for the provided build pipeline.
+
+Layout of source bundle:
+  android-app/   native host, mobile adapter, assets, build scripts
+  qr14/         corresponding web tool source, extended WASM core/source, licenses
+
+1. Set ANDROID_SDK_ROOT to your installed Android SDK.
+   Install platforms;android-35 and build-tools;35.0.0 with normal SDK tooling.
+   If using a differently named tools directory, set ANDROID_BUILD_TOOLS to it.
+2. Optional web rebuild: node qr14/source/build.cjs, then copy its output
+   source/dist/Cimbar-Offline.html to qr14/Cimbar-Offline.html.
+   The source bundle already contains the tested generated web page.
+3. python android-app/prepare-assets.py
+4. Point OPTICAL_KEYSTORE and OPTICAL_KEY_PASSWORD_FILE to your private PKCS12
+   key (alias optical) and a UTF-8 file with its password. Keep them private.
+   generate-signing-key.py can create a NEW signing identity; doing that does
+   not allow updating an installed APK signed with an older key.
+5. python android-app/build-apk.py
+
+Output: android-app/OpticalParcel-Android-2.0.0.apk
+The script runs AAPT2, javac, D8, ZIP alignment, APK signing, and verification.
+Linux toolchain execution was tested. The script also resolves .exe SDK tools
+on Windows and uses the platform-independent D8/apksigner JARs.
+
+Signing certificate SHA256:
+4828b6ac4466de2fd9cad6e7e7e0623befc63ddd83ece3afbb8042c6ed628a52
+Future in-place app updates must use the same signing key and package ID.
+The APK and public certificate cannot recover that private key.
+
+SDK packages used, downloaded from Google's official repository and SHA1 checked:
+platform-35_r02.zip   0bb560a90a7a2cbd0dd8348224d518b638fe7949
+build-tools_r35_linux.zip   2cfaa0bbb2336e9ec18ed3ecea84fa2e2af607bc
+These SDK tools are not redistributed in this source bundle.
+
+Tests:
+tests/test-mobile.cjs uses Playwright and a mocked native bridge.
+tests/emulator-smoke.py is a Linux-only Android 15 software-emulator test harness.
+The emulator and adb must be launched within the same execution namespace.

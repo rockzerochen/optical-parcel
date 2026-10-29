@@ -1,0 +1,66 @@
+{
+  "wrapper": "Optical Parcel Offline 1.4 (Cimbar + static text QR)",
+  "coreExtension": {
+    "version": "1.3",
+    "method": "Pinned original WASM -> WABT -> central Config::update branches -> validated WASM; not a full C++ dependency rebuild.",
+    "baseSHA256": "019a0d79419bdee0b918f409cdcfff919c172b75131dac5a36a44385151ca5af",
+    "modifiedSHA256": "e5ad043968f9ea31f3014b729573737161fbf44b2b84638ec80eebea7eebfb49",
+    "profiles": [
+      {
+        "id": 69,
+        "name": "Low",
+        "columns": 64,
+        "rows": 48,
+        "ecc": 36,
+        "block": 183,
+        "width": 592,
+        "height": 448,
+        "dataCells": 2928,
+        "encodedBytes": 2196,
+        "decodedBytes": 1764,
+        "fountainChunkBytes": 294,
+        "filePayloadBytes": 1728
+      },
+      {
+        "id": 70,
+        "name": "UltraLow",
+        "columns": 48,
+        "rows": 36,
+        "ecc": 40,
+        "block": 198,
+        "width": 448,
+        "height": 340,
+        "dataCells": 1584,
+        "encodedBytes": 1188,
+        "decodedBytes": 948,
+        "fountainChunkBytes": 158,
+        "filePayloadBytes": 912
+      }
+    ]
+  },
+  "date": "2026-10-28",
+  "officialCodecRelease": "https://github.com/sz3/libcimbar/releases/tag/v0.6.8",
+  "officialCodecArchive": "https://github.com/sz3/libcimbar/releases/download/v0.6.8/cimbar.wasm.tar.gz",
+  "officialCodecArchiveSHA256": "sha256:0a14b63decd9404e7a319b4b0f5cd873eb6aa325f90df4e965305f523567c4a5",
+  "officialAndroidRelease": "https://github.com/sz3/cfc/releases/tag/v0.6.8",
+  "officialAndroidAPK": "https://github.com/sz3/cfc/releases/download/v0.6.8/cfc_arm64_0.6.8_cv4.12.apk",
+  "officialAndroidAPKSHA256": "sha256:e91d513808629c6a8d218bdf09cf20aff99248cdb957c7e05b6596e5e73c4593",
+  "notes": "WASM core is locally modified to add Low/UltraLow profiles. Original runtime JS and official Android APK remain unmodified. See coreExtension manifest and CORE-BUILD.txt.",
+  "qrLibraries": {
+    "generator": {
+      "name": "Project Nayuki QR Code generator",
+      "url": "https://www.nayuki.io/res/qr-code-generator-library/qrcodegen.js",
+      "license": "MIT",
+      "sha256": "2511bc17f40a3c41d4a0578995db956b38997334d3d20113a5d4dc5c49c69480"
+    },
+    "decoder": {
+      "name": "jsQR",
+      "version": "1.4.0",
+      "url": "https://registry.npmjs.org/jsqr/-/jsqr-1.4.0.tgz",
+      "license": "Apache-2.0",
+      "originalSHA256": "bc40c8a15196236b2314db0856f72ca0b49980cd5413b8c852a7349f5fee0859",
+      "modifiedSHA256": "8c38a10002b2b25de91ac787bd06854f0ab58a1aae0d40ad868a34c94a6b860e",
+      "changes": "Added Hanzi subset 1 and strict rejection of unsupported segment modes; charset decoding handled separately from raw byte chunks."
+    }
+  }
+}

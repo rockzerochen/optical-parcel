@@ -1,0 +1,29 @@
+html,body{background:#0b1522;color:#eaf3ff;margin:0;overscroll-behavior:contain}
+body>header,body>nav,body>footer{display:none!important}
+main{padding:10px!important;max-width:760px;margin:auto}
+.layout{display:flex!important;flex-direction:column;gap:10px}
+.card{padding:14px!important;border-radius:12px!important;min-width:0}
+h2{font-size:18px;margin-bottom:10px}p{font-size:13px;line-height:1.65}
+label{margin-top:10px}button,a.button{min-height:44px;padding:10px 12px;font-size:14px}
+input,select,textarea{font-size:16px!important}input[type=file]{font-size:13px!important}
+.mobile-camera-head{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+.mobile-camera-head .mobile-camera-actions,.mobile-camera-head #camera-info{grid-column:1/-1}
+.mobile-camera-head #camera-info{font-size:12px;margin-bottom:0}
+.mobile-camera-actions{display:flex;gap:8px}.mobile-camera-actions button{flex:1}
+details{background:#142338;border:1px solid #2d4059;border-radius:10px;padding:10px;margin:8px 0!important}
+details summary{font-size:14px;min-height:26px;display:list-item}
+#viewfinder{width:min(100%,calc(44vh * var(--camera-ratio,1.333)));margin:auto}
+#video{width:100%;max-height:none;height:auto;object-fit:fill;border-radius:8px}
+#receive-stats,#decode-detail,#scan-info{font-size:12px}
+#diagnosis{padding:8px;font-size:12px;margin-top:8px}
+#received-text{min-height:110px}
+#stage{min-height:160px!important;padding:6px!important;margin-bottom:8px}
+#stage:fullscreen{min-height:100vh!important}
+#send-pane>details>aside{border:0;padding:0!important}
+#message{font-size:12px;padding:9px 12px;position:static;line-height:1.6}
+#qr-pane .qr-reader-grid{display:flex!important;flex-direction:column;gap:10px}
+#qr-pane .qr-reader{margin-top:0!important}#qr-pane>.layout{gap:10px}
+#qr-pane>p{font-size:12px}#qr-input{min-height:130px}#qr-result{min-height:150px}
+#qr-canvas-holder{min-height:220px;padding:10px}#qr-video{max-height:34vh}
+#qr-pane .qr-fields{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+.hash{font-size:11px}body{padding-bottom:8px}

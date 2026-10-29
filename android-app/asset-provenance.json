@@ -1,0 +1,6 @@
+{
+  "source": "Web tool 1.4, extended Cimbar core 1.3",
+  "webHTMLSHA256": "b77e8be42c9fa31d4a8159439b674b01e1a59ecc276b8269076bc5260d6d8d2f",
+  "appHTMLSHA256": "7c21950aa5b855e7d154fa10afa990984a4e10fcd3a6ce2e966644b2fadec4b9",
+  "changes": "Mobile layout; native navigation; blob save via Android SAF; clipboard; local-only blob/data fetch policy. Codec binaries unchanged."
+}

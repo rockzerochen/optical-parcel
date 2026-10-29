@@ -1,0 +1,38 @@
+{
+  "version": "1.3",
+  "method": "Pinned original WASM -> WABT -> central Config::update branches -> validated WASM; not a full C++ dependency rebuild.",
+  "baseSHA256": "019a0d79419bdee0b918f409cdcfff919c172b75131dac5a36a44385151ca5af",
+  "modifiedSHA256": "e5ad043968f9ea31f3014b729573737161fbf44b2b84638ec80eebea7eebfb49",
+  "profiles": [
+    {
+      "id": 69,
+      "name": "Low",
+      "columns": 64,
+      "rows": 48,
+      "ecc": 36,
+      "block": 183,
+      "width": 592,
+      "height": 448,
+      "dataCells": 2928,
+      "encodedBytes": 2196,
+      "decodedBytes": 1764,
+      "fountainChunkBytes": 294,
+      "filePayloadBytes": 1728
+    },
+    {
+      "id": 70,
+      "name": "UltraLow",
+      "columns": 48,
+      "rows": 36,
+      "ecc": 40,
+      "block": 198,
+      "width": 448,
+      "height": 340,
+      "dataCells": 1584,
+      "encodedBytes": 1188,
+      "decodedBytes": 948,
+      "fountainChunkBytes": 158,
+      "filePayloadBytes": 912
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+android-signing/
+*.p12
+*.jks
+*.keystore
+password.txt
+local.properties
+.env
+.env.*
+node_modules/
+__pycache__/
+*.pyc
+android-app/build/
+*.apk
+*.idsig
+.DS_Store
